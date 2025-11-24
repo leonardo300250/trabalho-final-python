@@ -7,18 +7,18 @@
     
 <div class="container mt-4">
     
-    <h2 class="text-center mb-4">Confira Animais para Adoção</h2>
+    <h2 class="text-center mb-4">Confira os Animais para Adoção</h2>
 
-    {% if animais %}
+    {% if products %}
     <div class="row">
-        {% for animal in animais %}
+        {% for product in products %}
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
 
             <div class="card shadow-sm">
 
                 <!-- Imagem -->
-                {% if animal.imagem %}
-                    <img src="{{ animal.imagem.url }}" class="card-img-top" alt="{{ animal.animais }}">
+                {% if product.imagem %}
+                    <img src="{{ product.imagem.url }}" class="card-img-top" alt="{{ product.produto }}">
                 {% else %}
                     <img src="{% static 'images/placeholder.png' %}" class="card-img-top" alt="Sem imagem">
                 {% endif %}
@@ -26,21 +26,17 @@
                 <div class="card-body">
                     
                     <!-- Nome -->
-                    <h5 class="card-title">{{ animal. }}</h5>
+                    <h5 class="card-title">{{ product.produto }}</h5>
 
                     <!-- Descrição -->
                     <p class="card-text text-muted">
                         {{ product.descricao|default:"Sem descrição cadastrada." }}
                     </p>
 
-                    <!-- Preço -->
-                    <p class="fw-bold">
-                        R$ {{ product.valor }}
-                    </p>
 
                     <!-- Botão -->
                     <a href="#" class="btn btn-dark w-100">
-                        Comprar
+                        Adotar
                     </a>
 
                 </div>
@@ -52,7 +48,7 @@
     </div>
 
     {% else %}
-    <p class="text-center text-muted mt-5">Nenhum produto disponível no momento.</p>
+    <p class="text-center text-muted mt-5">Nenhum animal disponível no momento.</p>
     {% endif %}
 
 </div>

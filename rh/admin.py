@@ -20,7 +20,7 @@ class MensagemContatoAdmin(admin.ModelAdmin):
 
 @admin.register(Produtos)
 class ProdutoAdmin(admin.ModelAdmin):
-    list_display = ('imagem','produto','categoria','descricao','valor')
+    list_display = ('imagem','produto','categoria','descricao',)
     search_fields = ('produto', 'categoria')
 
 @admin.register(Clientes)
