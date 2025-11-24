@@ -9,16 +9,16 @@
     
     <h2 class="text-center mb-4">Confira Animais para Adoção</h2>
 
-    {% if products %}
+    {% if animais %}
     <div class="row">
-        {% for product in products %}
+        {% for animal in animais %}
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
 
             <div class="card shadow-sm">
 
                 <!-- Imagem -->
-                {% if product.imagem %}
-                    <img src="{{ product.imagem.url }}" class="card-img-top" alt="{{ product.produto }}">
+                {% if animal.imagem %}
+                    <img src="{{ animal.imagem.url }}" class="card-img-top" alt="{{ animal.animais }}">
                 {% else %}
                     <img src="{% static 'images/placeholder.png' %}" class="card-img-top" alt="Sem imagem">
                 {% endif %}
@@ -26,7 +26,7 @@
                 <div class="card-body">
                     
                     <!-- Nome -->
-                    <h5 class="card-title">{{ product.produto }}</h5>
+                    <h5 class="card-title">{{ animal. }}</h5>
 
                     <!-- Descrição -->
                     <p class="card-text text-muted">
