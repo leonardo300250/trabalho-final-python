@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Produtos {% endblock %}
+
+{% block content %}
+    <h3>Página de Clientes</h3>
+
+    {% for cliente in clientes %}
+    <section class="card-cliente">
+        <div class="info-cliente">
+            <h4>{{cliente.nome}}</h4>
+            <p>Idade: {{cliente.idade}} </p>
+            <p>Email: {{cliente.email}} </p>
+            <p>Contato: {{cliente.contato}}</p>
+            {% if cliente.status == True %}
+                <p>Situação: Ativo</p>
+            {% endif %}
+        </div>
+    </section>
+    {% endfor %}
+{% endblock %}
