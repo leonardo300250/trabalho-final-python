@@ -22,6 +22,7 @@ def cadastro(request):
 def home(request):
     products = Produtos.objects.filter(em_estoque=True)
     return render(request, 'home.html', {'products': products})
+
 def produtos(request):
     lista_produtos = Produtos.objects.filter(em_estoque=True)
     context = {

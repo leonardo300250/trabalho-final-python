@@ -13,7 +13,7 @@
                     <form action="{% url 'login' %}" method="post" class="d-inline">
                         {% csrf_token %}
 
-                        <button type="submit" class="btn btn-sm btn-outline-danger">Sair</button>
+                        <a href="{% url 'logout' %}">Sair</a>
                     </form>
                     
                     {% if user.is_superuser %}
