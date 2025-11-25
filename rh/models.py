@@ -71,4 +71,4 @@ class Adotados(models.Model):
         verbose_name = "Adotado"
         verbose_name_plural = "Adotados" # Define o nome plural correto
     def __str__(self):
-        return self.adotado
+        return self.nome

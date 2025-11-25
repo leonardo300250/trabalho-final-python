@@ -29,7 +29,7 @@ class ClienteAdmin(admin.ModelAdmin):
     search_fields = ('nome','contato',)
 
 @admin.register(Adotados)
-class ProdutoAdmin(admin.ModelAdmin):
+class AdotadosAdmin(admin.ModelAdmin):
     list_display = ('nome','categoria')
     search_fields = ('nome','categoria')
     

@@ -4,4 +4,22 @@
 {% block content %}
     <h3>Adotados</h3>
 
+    {% for adotado in adotados %}
+    <section class="card-adotado">
+        {% if adotado.foto.url != null %}
+        <img src="{{ adotado.foto.url }}" alt="Foto de {{adotado.nome}}">
+        {% else %}
+        <img src="/static/images/usuario-sem-imagem.png" alt="Foto padrão de usuário">
+        {% endif %}
+        <div class="info-adotado">
+            <h4>{{adotado.nome}}</h4>
+            <p>Categoria: {{adotado.categoria}}</p>
+            <p>Descrição: {{adotado.descricao}} </p>
+            {% if adotado.status == True %}
+                <p>Situação: Adotado</p>
+            {% endif %}
+        </div>
+    </section>
+    {% endfor %}
+
 {% endblock %}
