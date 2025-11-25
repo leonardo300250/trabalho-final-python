@@ -1,6 +1,4 @@
-# UC3 — Django Static Blog/Empresa
-
-Projeto didático de Blog no DJANGO: Admin, ORM, Models, Partials.
+# UC3 — Django Projeto final
 
 ## Requisitos
 - Python 3.11+
