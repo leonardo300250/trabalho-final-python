@@ -1,8 +1,9 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.forms import UserCreationForm
-from .models import Funcionarios
+from .models import Parceiros
 from .forms import ContatoModelForm
 from .models import Produtos
+from .models import Adotados
 # Create your views here.
 
 def cadastro(request):
@@ -23,22 +24,33 @@ def home(request):
     products = Produtos.objects.filter(em_estoque=True)
     return render(request, 'home.html', {'products': products})
 
+
+def adotados(request):
+    lista_adotados = Adotados.objects.filter(status=True)
+    context = {
+        'adotados': lista_adotados
+    }
+    return render(request, 'adotados.html', context)
+
 def produtos(request):
     lista_produtos = Produtos.objects.filter(em_estoque=True)
     context = {
         'products': lista_produtos
     }
     return render(request, 'produtos.html', context)
+
 def clientes(request):
     return render(request,'clientes.html')
+
 def contatos(request):
     return render(request, 'contatos.html')
-def funcionarios(request):
-    funcionarios = Funcionarios.objects.filter(status=True)
+
+def parceiros(request):
+    parceiros = Parceiros.objects.filter(status=True)
     context = {
-        'funcionarios': funcionarios
+        'parceiros': parceiros
     }
-    return render(request,'funcionarios.html',context)
+    return render(request,'parceiros.html',context)
 
 # A view principal do formulário
 def formulario_contato_view(request):

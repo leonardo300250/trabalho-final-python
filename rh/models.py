@@ -16,18 +16,17 @@ class Produtos(models.Model):
     def __str__(self):
         return self.produto
     
-class Funcionarios(models.Model):
+class Parceiros(models.Model):
     foto = models.ImageField(null=True, blank=True)
     nome = models.CharField(max_length=100)
-    cargo = models.CharField(max_length=100)
-    departamento = models.CharField(max_length=100)
-    data_contratacao = models.DateField()
+    descricao = models.TextField(max_length=100,null=True,blank=True)
+    data_parceria = models.DateField()
     status = models.BooleanField(default=True)
     
     #corrige o problema de duplo 's' no nome do modelo no admin
     class Meta:
-        verbose_name = "Funcionário"
-        verbose_name_plural = "Funcionários" # Define o nome plural correto
+        verbose_name = "Parceiro"
+        verbose_name_plural = "Parceiros" # Define o nome plural correto
     def __str__(self):
         return self.nome
 
@@ -60,3 +59,16 @@ class Clientes(models.Model):
         verbose_name_plural = "Clientes" # Define o nome plural correto
     def __str__(self):
         return self.nome
+    
+class Adotados(models.Model):
+    foto = models.ImageField(null=True,blank=True)
+    nome = models.CharField(max_length=100,null=True,blank=True)
+    categoria = models.CharField(max_length=100,null=True,blank=True)
+    descricao = models.TextField(max_length=100,null=True,blank=True)
+    status = models.BooleanField(default=True)
+
+    class Meta:
+        verbose_name = "Adotado"
+        verbose_name_plural = "Adotados" # Define o nome plural correto
+    def __str__(self):
+        return self.adotado

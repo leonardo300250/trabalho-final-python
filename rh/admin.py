@@ -1,14 +1,14 @@
 from django.contrib import admin
-from .models import Funcionarios, MensagemContato, Produtos, Clientes
+from .models import Parceiros, MensagemContato, Produtos, Clientes, Adotados
 
-@admin.register(Funcionarios)
-class FuncionariosAdmin(admin.ModelAdmin):
+@admin.register(Parceiros)
+class ParceirosAdmin(admin.ModelAdmin):
     # Quais colunas mostrar na lista de produtos
-    list_display = ('nome', 'cargo', 'departamento', 'data_contratacao','status',)
+    list_display = ('nome','descricao', 'data_parceria','status',)
     # Por quais campos podemos buscar
     search_fields = ("nome",)
     # Quais campos podemos filtrar
-    list_filter = ('status', 'data_contratacao',)
+    list_filter = ('status', 'data_parceria',)
     
 # admin.site.register(Funcionarios)
 
@@ -27,4 +27,9 @@ class ProdutoAdmin(admin.ModelAdmin):
 class ClienteAdmin(admin.ModelAdmin):
     list_display = ('nome','idade','email','contato',)
     search_fields = ('nome','contato',)
+
+@admin.register(Adotados)
+class ProdutoAdmin(admin.ModelAdmin):
+    list_display = ('nome','categoria')
+    search_fields = ('nome','categoria')
     
