@@ -6,7 +6,7 @@
                     <span class="navbar-text me-3 text-white">
                         Olá, <strong>{{ user.username }}</strong>
                     </span>
-                    <form action="{% url 'logout' %}" method="post" class="d-inline">
+                    <form action="{% url 'login' %}" method="post" class="d-inline">
                         {% csrf_token %}
 
                         <button type="submit" class="btn btn-sm btn-outline-danger">Sair</button>
