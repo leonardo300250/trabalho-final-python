@@ -1,33 +1,44 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4 navbar-arredondada">
     <div class="container">
-        <a href="{% url 'home' %}">Inicio</a>
-        <a href="{% url 'adotados' %}">Já Adotados</a>
-        <a href="{% url 'parceiros' %}">Parceiros</a>
-        <a href="{% url 'contatos'%}">Contato</a>
-
+        <!-- Marca / Nome do site -->
         <a class="navbar-brand" href="{% url 'home' %}"></a>
 
-        {% if user.is_authenticated %}
-                    <span class="navbar-text me-3 text-white">
-                        Olá, <strong>{{ user.username }}</strong>
-                    </span>
-                    <form action="{% url 'login' %}" method="post" class="d-inline">
-                        {% csrf_token %}
+        <!-- Botão hamburguer que aparece no celular -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-                    </form>
+        <!-- Menu que recolhe no mobile -->
+        <div class="collapse navbar-collapse" id="menuNav">
 
-                    <form method="post" action="{% url 'logout' %}">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-danger">Sair</button>
-                    </form>
-                    
-                    {% if user.is_superuser %}
-                        <a href="/admin" class="btn btn-sm btn-warning ms-2">Admin</a>
-                    {% endif %}
-            
-                {% else %}
-                    <a href="{% url 'login' %}" class=>Entrar</a>
-                {% endif %}              
-            </div>
+            <!-- LINKS PRINCIPAIS -->
+            <ul class="navbar-nav me-auto gap-3">
+                <li class="nav-item"><a class="nav-link text-white" href="{% url 'home' %}">Início</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="{% url 'adotados' %}">Já Adotados</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="{% url 'parceiros' %}">Parceiros</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="{% url 'contatos' %}">Contato</a></li>
+            </ul>
+
+            <!-- ÁREA DE LOGIN / USUÁRIO -->
+            {% if user.is_authenticated %}
+
+                <span class="navbar-text text-white me-2">
+                    Olá, <strong>{{ user.username }}</strong>
+                </span>
+
+                <form method="post" action="{% url 'logout' %}" class="d-inline">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger btn-sm">Sair</button>
+                </form>
+
+                {% if user.is_superuser %}
+                    <a href="/admin" class="btn btn-warning btn-sm ms-2">Admin</a>
+                {% endif %}
+
+            {% else %}
+                <a href="{% url 'login' %}" class="btn btn-success btn-sm">Entrar</a>
+            {% endif %}
+
         </div>
-    </nav>
+    </div>
+</nav>

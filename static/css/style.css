@@ -1,17 +1,61 @@
-* {
-    margin:0;
+ * {
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-body{    
-    background-color: #f4f4f4;
-    color: #333;
+
+
+:root {
+    --verde-principal: #109c17;   /* verde elegante */
+    --verde-claro: #4caf50;
+    --branco: #ffffff;
+    --cinza-fundo: #f4f4f4;
+    --cinza-texto: #333;
+}
+
+.navbar-arredondada {
+    /* Define o raio de arredondamento para todos os cantos */
+    border-radius: 10px;
+    
+    /* Garante que o fundo preto siga o formato arredondado, 
+       prevenindo que o conteúdo interno (como sombra ou outros elementos)
+       ultrapasse os cantos. */
+    overflow: hidden;
+}
+
+body {    
+    background-color: var(--cinza-fundo);
+    color: var(--cinza-texto);
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
     display: flex;
     flex-direction: column;
-    
-    font-size: 16px;
-    
+
+    /* Botão redondo verde fixo no canto inferior direito */
+#btnTop{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #010202;  /* Verde Bootstrap */
+    color: white;
+    border: none;
+    font-size: 22px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    transition: 0.3s ease;
 }
+
+/* Efeito ao passar o mouse */
+#btnTop:hover{
+    background: #146c43; /* Tom mais escuro */
+    transform: scale(1.12);
+}
+}
+
 
 header {
     display: flex;
@@ -20,61 +64,104 @@ header {
 }
 
 .header {
-    background-color:black;
-    color: white;
-    padding: 1rem;
+    background-color: var(--verde-principal);
+    color: var(--branco);
+    padding: 1.2rem 2rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .header a {
     text-decoration: none;
-    color: #fff;
+    color: var(--branco);
     font-weight: bold;
-    margin-right: 1rem;
-}
-main{
-    padding: 2rem 5rem;
-    min-height: 100vh;    
+    margin-right: 1.5rem;
+    transition: 0.3s;
 }
 
-.card-funcionario {
-    display:flex;
-    width: 36rem;
-    background-color: #fff;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);   
+.header a:hover {
+    color: var(--verde-claro);
 }
+
+
+main {
+    padding: 2rem 5rem;
+    min-height: 100vh;
+}
+
+
+.card-funcionario {
+    display: flex;
+    width: 36rem;
+    background-color: var(--branco);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    border-left: 6px solid var(--verde-principal);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+    gap: 1.5rem;
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.card-funcionario:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 12px rgba(0,0,0,0.18);
+}
+
 
 .card-funcionario img {
     width: 150px;
     height: 180px;
-    
+    object-fit: cover;
+    border-radius: 5px;
 }
 
 .info-funcionario {    
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin-left: 2rem;
+    align-items: flex-start;
+    justify-content: center;
+    gap: .5rem;
 }
 
 
 footer {
     display: flex;
-    justify-content: flex-start;
-     justify-content: flex-start;
-    text-align: left;
     flex-direction: column;
+    justify-content: center;
     align-items: flex-start;
-    background-color: rgb(0, 0, 0);
-    color: #fff;
-    font-weight: bold;    
-    padding: 1rem;
-   
+    background-color: var(--verde-principal);
+    color: var(--branco);
+    font-weight: bold;
+    padding: 1.5rem;
+    margin-top: auto;
+    box-shadow: 0 -2px 6px rgba(0,0,0,0.15);
 }
+
+
 img {
     width: 100%;
-    height: 220px; /* ajuste como quiser */
+    height: 220px;
     object-fit: cover;
+}
+
+
+@media (max-width: 768px) {
+    main {
+        padding: 1rem;
+    }
+
+    .card-funcionario {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+
+    .card-funcionario img {
+        width: 100%;
+        height: 200px;
+    }
+
+    .info-funcionario {
+        align-items: center;
+    }
 }
