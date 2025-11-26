@@ -21,8 +21,20 @@ def cadastro(request):
     return render(request, 'cadastro.html', context)
 
 def home(request):
+    filtro_categoria = request.GET.getlist("categoria")  # pega categorias selecionadas
     products = Produtos.objects.filter(em_estoque=True)
-    return render(request, 'home.html', {'products': products})
+
+    if filtro_categoria:
+        products = products.filter(categoria__in=filtro_categoria)
+
+    categorias = Produtos.objects.values_list("categoria", flat=True).distinct()
+
+    context = {
+        'products': products,
+        'filtro_categoria': filtro_categoria,
+        'categorias': categorias
+    }
+    return render(request, 'home.html', context)
 
 
 def adotados(request):

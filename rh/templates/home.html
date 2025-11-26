@@ -1,19 +1,41 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Página Inicial{% endblock %}
+{% block title %}Produtos{% endblock %}
 
 {% block content %}
-    
 <div class="container mt-4">
-    
+
     <h2 class="text-center mb-4">Confira os Animais para Adoção</h2>
 
+    <!-- Caixa de Filtro -->
+    <form method="get" class="mb-4">
+        <div class="card p-3 shadow-sm mb-4">
+            <h5 class="mb-3">Filtrar por Categoria</h5>
+
+            {% for cat in categorias %}
+            <div class="form-check">
+                <input class="form-check-input"
+                       type="checkbox"
+                       name="categoria"
+                       value="{{ cat }}"
+                       id="cat_{{ forloop.counter }}"
+                       {% if cat in filtro_categoria %}checked{% endif %}>
+                <label class="form-check-label" for="cat_{{ forloop.counter }}">
+                    {{ cat }}
+                </label>
+            </div>
+            {% endfor %}
+
+            <button class="btn btn-dark mt-3" type="submit">Aplicar Filtros</button>
+        </div>
+    </form>
+
+    <!-- Lista de Produtos -->
     {% if products %}
     <div class="row">
         {% for product in products %}
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-
             <div class="card shadow-sm">
 
                 <!-- Imagem -->
@@ -24,33 +46,19 @@
                 {% endif %}
 
                 <div class="card-body">
-                    
-                    <!-- Nome -->
                     <h5 class="card-title">{{ product.produto }}</h5>
-
-                    <!-- Descrição -->
                     <p class="card-text text-muted">
                         {{ product.descricao|default:"Sem descrição cadastrada." }}
                     </p>
-
-
-                    <!-- Botão -->
-                    <a href="#" class="btn btn-dark w-100">
-                        Adotar
-                    </a>
-
+                    <a href="#" class="btn btn-dark w-100">Adotar</a>
                 </div>
-
             </div>
-
         </div>
         {% endfor %}
     </div>
-
     {% else %}
     <p class="text-center text-muted mt-5">Nenhum animal disponível no momento.</p>
     {% endif %}
 
 </div>
-
 {% endblock %}
