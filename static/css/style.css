@@ -1,28 +1,23 @@
- * {
+/* =========================================================
+   RESET & VARIÁVEIS
+========================================================= */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-
 :root {
-    --verde-principal: #109c17;   /* verde elegante */
+    --verde-principal: #109c17;
     --verde-claro: #4caf50;
     --branco: #ffffff;
     --cinza-fundo: #f4f4f4;
     --cinza-texto: #333;
 }
 
-.navbar-arredondada {
-    /* Define o raio de arredondamento para todos os cantos */
-    border-radius: 10px;
-    
-    /* Garante que o fundo preto siga o formato arredondado, 
-       prevenindo que o conteúdo interno (como sombra ou outros elementos)
-       ultrapasse os cantos. */
-    overflow: hidden;
-}
-
+/* =========================================================
+   BODY
+========================================================= */
 body {    
     background-color: var(--cinza-fundo);
     color: var(--cinza-texto);
@@ -30,13 +25,17 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
     flex-direction: column;
+}
 
-    /* Botão redondo verde fixo no canto inferior direito */
+/* =========================================================
+   BOTÃO "VOLTAR AO TOPO"
+========================================================= */
+
 #btnTop{
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background: #010202;  /* Verde Bootstrap */
+    background: #010202;
     color: white;
     border: none;
     font-size: 22px;
@@ -49,14 +48,23 @@ body {
     transition: 0.3s ease;
 }
 
-/* Efeito ao passar o mouse */
 #btnTop:hover{
-    background: #146c43; /* Tom mais escuro */
+    background: #146c43;
     transform: scale(1.12);
 }
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar-arredondada {
+    border-radius: 10px;
+    overflow: hidden;
 }
 
-
+/* =========================================================
+   HEADER
+========================================================= */
 header {
     display: flex;
     justify-content: space-between;
@@ -82,12 +90,17 @@ header {
     color: var(--verde-claro);
 }
 
-
+/* =========================================================
+   MAIN
+========================================================= */
 main {
     padding: 2rem 5rem;
     min-height: 100vh;
 }
 
+/* =========================================================
+   --- CARDS DE FUNCIONÁRIOS (SEU CSS ORIGINAL) ---
+========================================================= */
 
 .card-funcionario {
     display: flex;
@@ -107,7 +120,6 @@ main {
     box-shadow: 0 5px 12px rgba(0,0,0,0.18);
 }
 
-
 .card-funcionario img {
     width: 150px;
     height: 180px;
@@ -123,6 +135,77 @@ main {
     gap: .5rem;
 }
 
+/* =========================================================
+   --- CARDS DE ADOTADOS (NOVO + PADRONIZADO) ---
+========================================================= */
+
+section.card-adotado {
+    width: 90%;
+    max-width: 900px;
+    margin: 25px auto;
+    background: var(--branco);
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    border-left: 6px solid var(--verde-principal);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+section.card-adotado:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 12px rgba(0,0,0,0.18);
+}
+
+section.card-adotado img {
+    width: 260px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.info-adotado {
+    flex: 1;
+}
+
+.info-adotado h4 {
+    margin: 0 0 8px 0;
+    font-size: 22px;
+    color: var(--cinza-texto);
+}
+
+.info-adotado p {
+    margin: 4px 0;
+    color: #555;
+    font-size: 15px;
+}
+
+/* Badge de status */
+.info-adotado span {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 6px 12px;
+    background-color: var(--verde-principal);
+    color: white;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+/* =========================================================
+   IMAGENS GERAIS
+========================================================= */
+
+img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
 
 footer {
     display: flex;
@@ -137,19 +220,17 @@ footer {
     box-shadow: 0 -2px 6px rgba(0,0,0,0.15);
 }
 
-
-img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-}
-
+/* =========================================================
+   RESPONSIVIDADE
+========================================================= */
 
 @media (max-width: 768px) {
+
     main {
         padding: 1rem;
     }
 
+    /* Funcionários */
     .card-funcionario {
         flex-direction: column;
         width: 100%;
@@ -163,5 +244,17 @@ img {
 
     .info-funcionario {
         align-items: center;
+    }
+
+    /* Adotados */
+    section.card-adotado {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    section.card-adotado img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
     }
 }
